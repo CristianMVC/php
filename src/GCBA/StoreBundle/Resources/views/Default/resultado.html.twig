@@ -1,0 +1,46 @@
+{% include 'arriba.html.twig' %} 
+{% include 'menu_amarillo.html.twig' %}
+
+<div class="contenedor_general">
+<div class="container_12">
+
+{% if error %}     
+<div class='error_index'>
+    {% if error.message=='Bad credentials' %}
+     Los datos suministrados son incorrectos
+    {% else %}    
+    {{ error.message }}
+    {% endif %}
+</div>    
+{% endif %}
+    <div class="grid_6 push_3 form_consulta">
+    
+
+    
+       
+            <fieldset>
+                <legend>Generar Configs</legend>
+                
+                <div class="separador"></div>
+                     <label class="largo"  for="campo2">codigo formulario para controlador:</label>
+                     <textarea style="width: 922px; height: 277px;">
+                     {{ controlador|raw }}
+                     </textarea>
+                     <label class="largo"  for="campo2">codigo para archivo twig:</label>
+                     <textarea style="width: 922px; height: 277px;">
+                     {{ twig|raw }}
+                     </textarea>
+                          <label class="largo"  for="campo2">codigo formulario para controlador:</label>
+                     <textarea style="width: 922px; height: 277px;">
+                     {{ validation|raw }}
+                     </textarea>
+                     <label class="largo"  for="campo2">datos para archivo validation.yml:</label>
+        
+                <div class="separador"></div>
+            </fieldset>
+      
+        
+    </div>
+</div>
+
+{% include 'abajo.html.twig' %}  

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="GCBA\StoreBundle\Entity\SysAccion" table="sys_accion">
+    <id name="idSysAccion" type="integer" column="id_sys_accion">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="esMenu" type="boolean" column="es_menu" nullable="false"/>
+    <field name="nombre" type="string" column="nombre" length="200" nullable="false"/>
+    <field name="nombreMenu" type="string" column="nombre_menu" length="30" nullable="false"/>
+    <field name="descripcion" type="string" column="descripcion" length="100" nullable="false"/>
+    <field name="orden" type="integer" column="orden" nullable="false"/>
+    <field name="borrado" type="boolean" column="borrado" nullable="false"/>
+    <field name="logear" type="boolean" column="logear" nullable="false"/>
+    <field name="validarPhpsessid" type="boolean" column="validar_phpsessid" nullable="false"/>
+    <field name="esMenuDestacado" type="boolean" column="es_menu_destacado" nullable="false"/>
+    <field name="nombreRoute" type="string" column="nombre_route" length="50" nullable="true"/>
+    <many-to-one field="idSysModulo" target-entity="SysModulo">
+      <join-columns>
+        <join-column name="id_sys_modulo" referenced-column-name="id_sys_modulo"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idSysControlador" target-entity="SysControlador">
+      <join-columns>
+        <join-column name="id_sys_controlador" referenced-column-name="id_sys_controlador"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-many field="idSysPerfil" target-entity="SysPerfil" mapped-by="idSysAccion"/>
+  </entity>
+</doctrine-mapping>

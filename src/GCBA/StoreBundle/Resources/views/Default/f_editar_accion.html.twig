@@ -1,0 +1,117 @@
+{% include 'arriba.html.twig' %}
+
+{% include 'menu_amarillo.html.twig' %}
+
+<div class="contenedor_general">   
+
+    <div class="container_12">
+        {% include 'mensaje.html.twig' %} 
+        <div class="grid_10 push_1 form_consulta">
+
+            {{ form_start(form) }}
+
+            <fieldset>
+            <legend> Editar Acción</legend>
+            <div class="separador"></div>
+            <div class="grid_8 push_1 alpha omega">
+                <a href="{{ path('gcba_accion_alta')}}">Alta Acción</a>
+                <div class="separador"></div> 
+
+                {{ form_errors(form) }}
+
+
+                <label class="largo"  for="campo2">Módulo:</label>
+                {{ form_errors(form.idSysModulo) }}
+                <div class="cinco">
+                    {{ form_widget(form.idSysModulo) }}
+                </div>     
+                <div class="separador"></div>
+                {{ form_errors(form) }}
+                <label class="largo"  for="campo2">Controlador:</label>
+                {{ form_errors(form.idSysControlador) }}
+                <div class="cinco">
+                    {{ form_widget(form.idSysControlador) }}
+                </div>     
+
+                <div class="separador"></div>
+                <label class="largo"  for="campo2">Nombre Route:</label>
+                {{ form_errors(form.nombreRoute) }}
+
+                {{ form_widget(form.nombreRoute) }}
+                <div class="separador"></div>                   
+
+                <label class="largo"  for="campo2">¿Es menú?:</label>
+                {{ form_errors(form.es_menu) }}
+
+                {{ form_widget(form.es_menu) }}
+                <div class="separador"></div>         
+                <label class="largo"  for="campo2">Nombre:</label>
+                {{ form_errors(form.nombre) }}
+
+                {{ form_widget(form.nombre) }}
+                <div class="separador"></div>
+
+                <label class="largo"  for="campo2">Nombre Menú:</label> 
+                {{ form_errors(form.nombreMenu) }}
+
+                {{ form_widget(form.nombreMenu) }}
+                <div class="separador"></div>
+
+                <label class="largo"  for="campo2">Descripción:</label>
+                {{ form_errors(form.descripcion) }}
+
+                {{ form_widget(form.descripcion) }}
+
+
+                <div class="separador"></div>
+                <label class="largo"  for="campo2">Orden:</label>
+                {{ form_errors(form.orden) }}
+
+                {{ form_widget(form.orden) }}
+                <div class="separador"></div>
+
+                {{ form_errors(form.borrado) }}
+                <label class="largo"  for="campo2">Borrado:</label>
+                {{ form_widget(form.borrado) }}
+                <div class="separador"></div>
+
+                <label class="largo"  for="campo2">Loguear:</label>
+                {{ form_errors(form.logear) }}
+
+                {{ form_widget(form.logear) }}
+                <div class="separador"></div>
+
+                <label class="largo"  for="campo2">Phpsessionid:</label>
+                {{ form_errors(form.validar_phpsessid) }}
+
+                {{ form_widget(form.validar_phpsessid) }}
+                <div class="separador"></div>
+
+                <label class="largo"  for="campo2">Es menú destacado:</label>
+                {{ form_errors(form.es_menu_destacado) }}
+
+                {{ form_widget(form.es_menu_destacado) }}
+                <div class="separador"></div>     
+
+
+
+
+                <div class="clear" style="height:15px;"></div>
+                <div class=" grid_2 push_1 alpha form_consulta">
+                    {{ form_widget(form.Guardar) }}
+                </div>
+            </div>
+        </div>                 
+        </fieldset>
+        {{ form_end(form) }}
+
+        <div class="clear" style="height:15px;"></div>
+        <h3 class="subrayado">Acciones</h3>              
+        {% include 'GCBAStoreBundle:Default:grilla_accion.html.twig' %}
+
+
+    </div>   <!-- general 12-->
+
+   </div> <!-- general-->
+
+ {% include 'abajo.html.twig' %}

@@ -1,0 +1,22 @@
+{% include 'arriba.html.twig' %}
+{% include 'menu_amarillo.html.twig' %}
+
+<div class="contenedor_general">
+<div class="grid_10 push_1 form_consulta">
+<fieldset>
+<select>
+{% if roles is defined %}
+    {% for mostrarRoles in roles %} 
+
+   <option>mostrarRoles.nombre</option>
+
+ {% endfor %}
+{% endif %}
+</select>
+</fieldset>
+</div>
+
+</div>
+
+
+{% include 'abajo.html.twig' %}

@@ -1,0 +1,1 @@
+php app/console doctrine:mapping:import --force GCBAStoreBundle xml

@@ -1,0 +1,2 @@
+php app/console doctrine:mapping:convert annotation ./src --force
+php app/console doctrine:generate:entities GCBAStoreBundle 

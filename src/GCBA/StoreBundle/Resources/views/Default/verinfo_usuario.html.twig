@@ -1,0 +1,47 @@
+       
+                                  
+                                  
+ 
+          <td  colspan='10'>
+               <div class='div_info_usuario'>
+                   <span>Nombre: {{ usuario.nombre }}</span>
+                   <span>Apellido:{{ usuario.apellido }} </span>
+                   
+               </div>
+               <div>
+                    <div class='contenedor_general_perfiles'>
+                        
+                       {% if perfiles|length > 0 %}
+
+
+                        <div>Perfiles</div>
+                        
+                <div class='contenedor_selector_de_perfiles'>
+                            <select id='tr_usuario_info_selectPerfiles_{{ usuario.id }}'>
+                                     {% for perfil in perfiles %}
+                                        <option value='{{ perfil.id }}'>{{ perfil.nombre }}</option>        
+                                {% endfor %}
+                    </select>
+                            <input type='button' value='+' id='b1' onclick="addPerfil('{{ usuario.id }}',document.getElementById('tr_usuario_info_selectPerfiles_{{ usuario.id }}').value);">
+                        </div>
+                       {% endif %} 
+               </div>
+                    <div class='contenedor_perfiles_asignados'>
+
+
+                    {% for perfil in perfiles_asignados %}           
+                            <div  class='contenedor_perfil_asignado'>
+                                        <span><input type='button' value='-' onclick='delPerfil("{{ usuario.id }}","{{ perfil.idsysperfil }}")'></span>
+                                        <span class='oculto'>{{ perfil.idsysperfil }}</span>
+                                        <span>{{ perfil.nombre }}</span>
+                                        <span>{{ perfil.descripcion }}
+                                        
+
+                                        </span>  </div>
+
+                    {% endfor %}                      
+              
+     </div>
+               </div>
+          </td>
+           

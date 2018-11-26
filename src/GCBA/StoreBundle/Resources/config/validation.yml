@@ -1,0 +1,178 @@
+GCBA\StoreBundle\Entity\SysControlador:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: nombre
+            errorPath: nombre
+            message: 'Este nombre ya se encuentra en la base de datos.'
+
+    properties:  
+        nombre:
+          - NotBlank: ~
+          - Regex:
+               pattern: "/^[a-z áéíóú]+$/i"
+               htmlPattern: "^[a-zA-Z áéíóú']+$"
+          - Length:
+                min: 3
+                max: 50   
+                   
+                   
+                   
+GCBA\StoreBundle\Entity\SysAccion:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: nombre
+            errorPath: nombre
+            message: 'Este nombre de accion ya se encuentra en la base de datos.'
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: nombreRoute
+            errorPath: nombreRoute
+            message: 'Este nombre de route  ya se encuentra en la base de datos.'
+
+    properties:
+        idSysModulo:
+          - NotBlank: ~
+        idSysControlador:
+          - NotBlank: ~    
+        nombre:
+          - NotBlank: ~
+          - Regex:
+               pattern: "/^[a-z áéíóú]+$/i"
+               htmlPattern: "^[a-zA-Z áéíóú']+$"
+          - Length:
+               min: 3
+        nombreRoute:
+          - NotBlank: ~
+          - Regex:
+               pattern: "/^[a-z áéíóú_]+$/i"
+               htmlPattern: "^[a-zA-Z áéíóú_']+$"
+          - Length:
+               min: 3
+               max: 50                 
+        nombreMenu:
+          - NotBlank: ~
+          - Regex:
+               pattern: "/^[a-z áéíóú]+$/i"
+               htmlPattern: "^[a-zA-Z áéíóú']+$"
+          - Length:
+               min: 3
+               max: 30 
+        descripcion:
+          - NotBlank: ~
+          - Regex:
+               pattern: "/^[a-z áéíóú_]+$/i"
+               htmlPattern: "^[a-zA-Z áéíóú_']+$"
+          - Length:
+               min: 3
+               max: 100
+        orden:
+          - NotBlank: ~
+          - Range:
+                min: 0
+                max: 10000 
+
+GCBA\StoreBundle\Entity\SysUsuario:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: usuario
+            errorPath: usuario
+            message: 'Este nombre de Usuario ya se encuentra en la base de datos.'
+
+    properties:
+        nombre:
+            - NotBlank: ~
+            - Regex:
+                pattern: "/^[a-z áéíóú_]+$/i"
+                htmlPattern: "^[a-zA-Z áéíóú_']+$"
+            - Length:
+                min: 3
+                max: 20
+        apellido:
+            - NotBlank: ~
+            - Regex:
+                pattern: "/^[a-z áéíóú_]+$/i"
+                htmlPattern: "^[a-zA-Z áéíóú_']+$"
+            - Length:
+                min: 3
+                max: 20
+        usuario:
+            - NotBlank: ~
+            - Regex:
+                pattern: "/^[a-záéíóú_]+$/i"
+                htmlPattern: "^[a-zA-Záéíóú_']+$"
+            - Length:
+                min: 3
+                max: 100
+        password:
+            - Length:
+                min: 8
+                max: 20
+        correo:    
+            - NotBlank: ~
+            - Email:
+                message: El correo "{{ value }}" no es valido.
+                checkMX: false
+            - Length:
+                min: 3
+                max: 250    
+            
+
+
+GCBA\StoreBundle\Entity\SysPerfil:
+   constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: nombre
+            errorPath: nombre
+            message: 'Este nombre de Perfil ya se encuentra en la base de datos.'
+
+   properties:
+        nombre:
+            - NotBlank: ~
+            - Regex:
+                 pattern: "/^ROLE_[a-z áéíóú_]+$/i"
+                 htmlPattern: "^ROLE_[a-zA-Z áéíóú_']+$"
+                 message: "este valor no es valido la cadena debe empezar con ROLE_ "
+            - Length:
+                 min: 3
+                 max: 30
+        descripcion:
+            - NotBlank: ~
+            - Regex:
+                 pattern: "/^[a-z áéíóú_]+$/i"
+                 htmlPattern: "^[a-zA-Z áéíóú_']+$"
+            - Length:
+                 min: 3
+                 max: 100               
+GCBA\StoreBundle\Entity\SysModulo:
+   constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: nombre
+            errorPath: nombre
+            message: 'Este nombre de Perfil ya se encuentra en la base de datos.'
+
+   properties:
+        nombre:
+            - NotBlank: ~
+            - Regex:
+                 pattern: "/^[a-z áéíóú_]+$/i"
+                 htmlPattern: "^[a-zA-Z áéíóú_']+$"
+
+            - Length:
+                 min: 3
+                 max: 30
+        descripcion:
+            - NotBlank: ~
+            - Regex:
+                 pattern: "/^[a-z áéíóú_]+$/i"
+                 htmlPattern: "^[a-zA-Z áéíóú_']+$"
+            - Length:
+                 min: 3
+                 max: 100
+        orden:
+            - NotBlank: ~
+            - Range:
+                 min: 0
+                 max: 10000   
+            
+                 
+                 
+                             

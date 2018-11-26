@@ -1,0 +1,73 @@
+{% include 'arriba.html.twig' %}
+
+{% include 'menu_amarillo.html.twig' %}
+           
+<div class="contenedor_general">   
+
+    <div class="container_12">
+        {% include 'mensaje.html.twig' %} 
+            <div class="grid_10 push_1 form_consulta">
+
+                    {{ form_start(form) }}
+
+                    <fieldset>
+                    <legend> Alta Módulo</legend>
+                    <div class="separador"></div>
+                    <div class="grid_10 push_1 form_consulta">
+
+                          <div class="separador"></div> 
+               
+
+
+                        
+                         <label class="largo"  for="campo2">Nombre: (<font color="#FF0000">*</font>):</label>    
+                        {{ form_errors(form.nombre) }}
+  
+                        {{ form_widget(form.nombre) }}
+                        <div class="separador"></div>
+
+
+
+                 
+                                              <label class="largo"  for="campo2">Descripción: (<font color="#FF0000">*</font>):</label>   
+                        {{ form_errors(form.descripcion) }}
+ 
+                                {{ form_widget(form.descripcion) }}
+
+                        <div class="separador"></div>
+
+
+             
+             
+                                               <label class="largo"  for="campo2">Orden: (<font color="#FF0000">*</font>):</label>   
+                        {{ form_errors(form.orden) }}
+                                {{ form_widget(form.orden) }}
+
+   
+                        <div class="separador"></div>
+
+                   
+                        {{ form_errors(form.borrado) }}
+                        <label class="largo"  for="campo2">Borrado: (<font color="#FF0000">*</font>):</label>      
+                            <div class="uno">
+                                {{ form_widget(form.borrado) }}
+                            </div>                    
+                            
+                            
+                            <div class="clear" style="height:15px;"></div>
+                            <div class=" grid_2 push_1 alpha form_consulta">
+                                {{ form_widget(form.Guardar) }}
+                            </div>
+                    </div>
+            </div>                 
+            </fieldset>
+            {{ form_end(form) }}
+                
+
+
+            </div>
+    </div>   <!-- general 12-->
+
+   </div> <!-- general-->
+
+ {% include 'abajo.html.twig' %}

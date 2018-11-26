@@ -1,0 +1,25 @@
+{% include 'arriba.html.twig' %}
+
+ <div class="contenedor_general">   
+
+    <div class="container_12">
+  {% if error %}
+    <div>{{ error.message }}</div>
+{% endif %}   
+
+
+<div class="error_index">
+        <ul>
+        <li>Ocurrio un error </li>
+        {% if status_code == 403 %}
+        <li> <h1>{{ message }}No tiene permiso para acceder a esta Aplicación/Acción</h1></li>
+        {% else %}
+        <li> <h1>"error {{ status_code }} /{{ exception.message }}/ {{ status_text }}"</h1></li>
+        {% endif %}
+        </ul>
+        </div>
+     </div>
+   </div> 
+        
+      
+{% include 'abajo.html.twig' %}

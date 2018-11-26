@@ -1,0 +1,5 @@
+snowcap_core_feed:
+    pattern: /{feedName}.{_format}
+    defaults: { _controller: SnowcapCoreBundle:Feed:index, _format: rss }
+    requirements:
+          _format: rss|atom

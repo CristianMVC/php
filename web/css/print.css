@@ -1,0 +1,7 @@
+/* Versión para imprimir sin encabezado ni pie
+----------------------------------------------------------------------------------------------------*/
+
+
+#cabecera_fija, .pie, #boton_imprimir {
+    display:none !important;
+}

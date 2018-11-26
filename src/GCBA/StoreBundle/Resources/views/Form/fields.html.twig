@@ -1,0 +1,101 @@
+
+{% block datetime_widget %}
+{% spaceless %}
+    {% if widget == 'single_text' %}
+    
+        {% set type = type|default('text') %}
+        <input style="margin:0;" type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+
+    {% else %}
+        <div {{ block('widget_container_attributes') }}>
+          {{ form_errors(form.date) }}
+            {{ form_errors(form.time) }}
+            {{ form_widget(form.date) }}
+            {{ form_widget(form.time) }}
+        </div>
+    {% endif %}
+{% endspaceless %}
+{% endblock datetime_widget %}
+
+
+{% block date_widget %}
+{% spaceless %}
+    {% if widget == 'single_text' %}
+        {% set type = type|default('text') %}
+        <input  type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+
+    {% else %}
+        <div {{ block('widget_container_attributes') }}>
+            {{ date_pattern|replace({
+                '{{ year }}':  form_widget(form.year),
+                '{{ month }}': form_widget(form.month),
+                '{{ day }}':   form_widget(form.day),
+            })|raw }}
+        </div>
+    {% endif %}
+{% endspaceless %}
+{% endblock date_widget %}
+
+{% block form_widget_simple %}
+{% spaceless %}
+{% set type = type|default('text') %}
+<input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+{% endspaceless %}
+{% endblock form_widget_simple %}
+
+
+{% block button_widget %}
+{% spaceless %}
+{% if label is empty %}
+{% set label = name|humanize %}
+{% endif %}
+<input type="{{ type|default('button') }}" {{ block('button_attributes') }} value="{{ label|trans({}, translation_domain) }}">
+{% endspaceless %}
+{% endblock button_widget %}
+
+{% block submit_widget %}
+{% spaceless %}
+{% set type = type|default('submit') %}
+{{ block('button_widget') }}
+{% endspaceless %}
+{% endblock submit_widget %}
+
+
+
+{% block captcha_widget %}
+{% if is_human %}
+-
+{% else %}
+{% spaceless %}
+       {{ form_widget(form) }}
+     <div class="separador"></div>
+    <img style='margin-left:150px' marid="{{ image_id }}" src="{{ captcha_code }}" alt="" title="captcha" width="{{ captcha_width }}" height="{{ captcha_height }}" />
+    {% if reload %}
+    <script type="text/javascript">
+        function reload_{{ image_id }}() {
+            var img = document.getElementById('{{ image_id }}');
+            img.src = '{{ captcha_code }}?n=' + (new Date()).getTime();
+        }
+    </script>
+    <a class="captcha_reload" href="javascript:reload_{{ image_id }}();">{{ 'Renew'|trans({}, 'gregwar_captcha') }}</a>
+    {% endif %}
+
+{% endspaceless %}
+{% endif %}
+{% endblock %}
+{% block form_label %}
+{% spaceless %}
+    {% if label is not sameas(false) %}
+        {% if not compound %}
+            {% set label_attr = label_attr|merge({'for': id}) %}
+        {% endif %}
+        {% if required %}
+            {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
+        {% endif %}
+        {% if label is empty %}
+            {% set label = name|humanize %}
+        {% endif %}
+        <label class="largo" >{{ label|trans({}, translation_domain) }} (<font color="#FF0000">*</font>)</label>
+    {% endif %}
+{% endspaceless %}
+{% endblock form_label %}

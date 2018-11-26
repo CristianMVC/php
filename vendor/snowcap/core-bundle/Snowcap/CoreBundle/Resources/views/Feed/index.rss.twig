@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+    <channel>
+        <title>{{ feed.title }}</title>
+        <link>{{ feed.link }}</link>
+        <description>{{ feed.description }}</description>
+        <language>{{ locale }}</language>
+        <pubDate>{{ feed.updatedAt|date(constant('DATE_RSS')) }}</pubDate>
+        {% for item in items %}
+        <item>
+            <title>{{ item.title }}</title>
+            <link>{{ item.link }}</link>
+            <guid>{{ item.id }}</guid>
+            <description>{{ item.description }}</description>
+            <pubDate>{{ item.createdAt|date(constant('DATE_RSS')) }}</pubDate>
+            <author>{{ item.author.email }} ({{ item.author.name }})</author>
+        </item>
+        {% endfor %}
+    </channel>
+</rss>

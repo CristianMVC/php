@@ -1,0 +1,47 @@
+{
+    "name": "snowcap/core-bundle",
+    "type": "symfony-bundle",
+    "description": "Symfony SnowcapCoreBundle",
+    "keywords": ["Utility"],
+    "homepage": "https://github.com/snowcap/SnowcapCoreBundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Pierre Vanliefland",
+            "email": "pierre@snowcap.be"
+        },
+        {
+            "name": "Edwin Hermans",
+            "email": "edwin@snowcap.be"
+        },
+        {
+            "name": "Jérôme Poskin",
+            "email": "jerome@snowcap.be"
+        },
+        {
+            "name": "Snowcap",
+            "homepage": "http://www.snowcap.be"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.3.3",
+        "symfony/framework-bundle": ">=2.2"
+    },
+    "require-dev": {
+        "symfony/symfony": ">=2.2",
+        "fzaninotto/faker": "1.1.*@dev",
+        "doctrine/orm": ">=2.2.3",
+        "doctrine/doctrine-bundle": "1.2.*",
+        "doctrine/data-fixtures": "1.0.*@dev"
+},
+    "autoload": {
+        "psr-0": { "Snowcap\\CoreBundle": "" }
+    },
+    "target-dir": "Snowcap/CoreBundle",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.3.x-dev"
+        }
+    }
+}

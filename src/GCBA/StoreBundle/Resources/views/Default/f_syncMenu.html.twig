@@ -1,0 +1,53 @@
+{% include 'arriba.html.twig' %}
+
+{% include 'menu_amarillo.html.twig' %}
+           
+<div class="contenedor_general">   
+
+    <div class="container_12">
+            {% include 'mensaje.html.twig' %} 
+            <div class="grid_10 push_1 form_consulta">
+
+                    {{ form_start(form) }}
+
+                    <fieldset>
+                    <legend>Importar Exportar Acciones de Menu</legend>
+                    <div class="separador"></div>
+                    <div class="grid_8 push_1 alpha omega">
+
+                        
+                        {{ form_errors(form) }}
+    
+        <label class="largo"  for="campo2">Xml:</label>
+                        {{ form_errors(form.xml) }}
+                            <div class="cinco">
+                                {{ form_widget(form.xml) }}
+                            </div>   
+                        <div class="separador"></div>     
+
+        
+                            
+                            
+                            <div class="clear" style="height:15px;"></div>
+                            <div class=" grid_2 push_1 alpha form_consulta">
+                                {{ form_widget(form.Importar) }}
+                            </div>
+                     
+                      
+                              <div class="clear" style="height:15px;"></div>
+                            <a href="{{ path('gcba_getXml') }}">Exportar Xml</a>
+                              <div class="clear" style="height:15px;"></div>
+                    </div>
+            </div>                 
+            </fieldset>
+            {{ form_end(form) }}
+                
+
+
+            </div>
+            
+    </div>   <!-- general 12-->
+
+   </div> <!-- general-->
+
+ {% include 'abajo.html.twig' %}

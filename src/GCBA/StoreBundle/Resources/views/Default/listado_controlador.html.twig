@@ -1,0 +1,72 @@
+    
+{% include 'arriba.html.twig' %}
+
+{% include 'menu_amarillo.html.twig' %}
+
+
+
+           
+<div class="contenedor_general">   
+<div class="container_12">
+ <h3 class="subrayado">Controladores</h3>
+ </div>
+<div class="container_12">
+    {% include 'mensaje.html.twig' %} 
+<div class="clear" style="height:15px;"></div>  
+
+    <form id="form2" method="post">   
+
+<table class="contenido">              
+    
+    <thead>
+    <tr>
+    <th class="titulo_tabla"  colspan="10">
+            Routes
+    </th>
+    </tr>
+    </thead>
+    <tr>
+        
+         <th>Borrar</th>
+         <th> &nbsp; </th>
+        <th>{{ knp_pagination_sortable(pagination,'Id', 'r.idSysControlador')|raw }}</th>
+       <th>{{ knp_pagination_sortable(pagination,'Nombre', 'r.nombre')|raw }}</th>
+    <th>{{ knp_pagination_sortable(pagination,'Borrado', 'r.Borrado')|raw }}</th>
+
+    
+                        
+
+    </tr>
+
+    
+    {% for controlador in pagination %}
+    <tr>
+        <td><input type="checkbox" id="ids_{{ controlador.idsyscontrolador }}" name="ids[{{ controlador.idsyscontrolador }}]"></td>
+  <td><a href="Editar/{{ controlador.idsyscontrolador }}">Editar</a></td>    
+        <td>{{ controlador.idsyscontrolador }}</td>
+        <td>{{ controlador.nombre }}</td>
+        <td>{{ controlador.borrado }}</td>
+
+        
+
+    </tr>
+    {% endfor %}
+    
+    
+</table>
+     <div class="separador"></div>   
+<div class="navigation" align="center">
+    {{ knp_pagination_render(pagination)|raw }}
+   </div>
+
+                <div class="separador"></div>
+                <div class=" grid_4 push_4 form_consulta">
+<input type="submit" class="submit" value="Borrar" name="B" id="b" >
+
+</div>
+   </form>              
+   </div>       </div>
+    
+   
+     {% include 'abajo.html.twig' %}
+

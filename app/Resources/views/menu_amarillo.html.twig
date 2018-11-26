@@ -1,0 +1,47 @@
+ <!--EMPIEZA LA PRIMER LINEA DE MENU-->   
+    <div class="user_bar clearfix">
+        <div class="container_12 clearfix">
+            <div class="menu">
+                   <ul>
+                   <li class="menu_inicio"><a href="{{ url('gcba_homepage') }}">Inicio</a></li>
+                </ul>
+                 <!--   twig -->
+                 
+                   {% include 'menu.html.twig' %}
+                 <!--   twig -->
+                   <ul>
+                    <li class="menu_cerrar_sesion">
+                        <a href="{{ url('logout') }}">Cerrar Sesión</a>
+                    </li>
+                   </ul> 
+
+            </div>
+        </div>
+    </div>
+    <!--TERMINA LA PRIMER LINEA DE MENU-->
+    <!--EMPIEZA LA SEGUNDA LINEA DE MENU-->   
+    
+    </div>
+    <!--TERMINA LA SEGUNDA LINEA DE MENU-->
+<script type="text/javascript">
+$(function(){
+
+  
+                 
+    var menu = $('#cabecera_fija'),
+        pos = menu.offset();
+        $(window).scroll(function(){
+            if($(this).scrollTop() > pos.top+menu.height() && menu.hasClass('default')){
+                menu.fadeOut('fast', function(){
+                    $(this).removeClass('default').addClass('fixed').fadeIn('fast');
+                });
+            } else if($(this).scrollTop() <= pos.top && menu.hasClass('fixed')){
+                menu.fadeOut('fast', function(){
+                    $(this).removeClass('fixed').addClass('default').fadeIn('fast');
+                });
+            }
+        });
+
+});
+</script>
+<!--ACA EMPIEZA EL CONTENIDO-->

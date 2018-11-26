@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="GCBA\StoreBundle\Entity\SysPerfil" table="sys_perfil">
+    <id name="idSysPerfil" type="integer" column="id_sys_perfil">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nombre" type="string" column="nombre" length="30" nullable="false"/>
+    <field name="descripcion" type="string" column="descripcion" length="100" nullable="false"/>
+    <field name="borrado" type="boolean" column="borrado" nullable="false"/>
+    <many-to-many field="idSysUsuario" target-entity="SysUsuario" mapped-by="idSysPerfil"/>
+    <many-to-many field="idSysAccion" target-entity="SysAccion" inversed-by="idSysPerfil">
+      <join-table name="sys_perfil_accion">
+        <join-columns>
+          <join-column name="id_sys_perfil" referenced-column-name="id_sys_perfil" on-delete="CASCADE" />
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="id_sys_accion" referenced-column-name="id_sys_accion" on-delete="CASCADE" />
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+  </entity>
+</doctrine-mapping>

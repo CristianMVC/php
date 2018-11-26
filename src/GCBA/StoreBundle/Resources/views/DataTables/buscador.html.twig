@@ -1,0 +1,48 @@
+
+
+<div>
+ <div class="grid_12 push_0 form_consulta">
+     <fieldset> 
+      <legend>Buscar por:</legend>
+     <div class="separador"></div>
+
+         <div class="grid_8 push_1 alpha omega">
+                    <div class="grid_8 alpha omega">
+                    
+               
+                    
+{% for dato in Nombres %}
+{% if dato.nombre %}
+
+     <div class="separador"></div>
+{% if dato.nombre!="foto" %}
+<label class="largo" for="seccion">{{ dato.nombre }}:&nbsp;</label>   
+{% endif %}
+
+{% if dato.type=="entity" %}
+    <div class="cuatro">
+      <span id="{{ dato.id }}">
+        </span> 
+    </div>
+    
+   {% else %} 
+        <span id="{{ dato.id }}">
+  
+    </span>   
+    {% endif %}
+
+
+
+  
+
+{% endif %}
+
+
+{% endfor %}
+
+</div>
+  </div>
+ </fieldset>
+ 
+ </div>
+</div> 

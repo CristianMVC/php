@@ -1,0 +1,41 @@
+{% include 'arriba.html.twig' %}
+{% include 'menu_amarillo.html.twig' %}
+
+<div class="contenedor_general">
+
+
+
+<div class="grid_10 push_1 form_consulta">
+<fieldset>
+<legend>Remito:</legend>
+<br />
+
+<div class="remito">
+<form  method="post" class="form_consulta">
+
+   {{ form_start(form) }}
+    {{ form_errors(form) }}
+ 
+    {{ form_row(form.Area) }}
+    {{ form_row(form.Descripcion) }}
+ 
+    {{ form_rest(form) }}
+    <br />
+ <div class="button">
+ <input type="submit" id="b" class="submit"  value="Enviar" />
+ </div>
+{{ form_end(form) }}
+
+    
+</form>
+</div>
+</fieldset>
+</div>
+
+</div>
+
+
+{% include 'abajo.html.twig' %}
+
+
+

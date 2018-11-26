@@ -1,0 +1,128 @@
+gcba_homepage:
+    pattern:  /
+    defaults: { _controller: GCBAStoreBundle:Default:index }
+
+gcba_alta_usuario:
+    pattern:  /alta_usuario/
+    defaults: { _controller: GCBAStoreBundle:Usuario:AltaUsuario }
+gcba_usuario_homepage:
+    pattern:  /Usuario/
+    defaults: { _controller: GCBAStoreBundle:Usuario:listarUsuarios }
+gcba_usuario_addperfil:
+    pattern:  /Usuario/addPerfil/
+    defaults: { _controller: GCBAStoreBundle:Usuario:addperfil }
+gcba_usuario_delperfil:
+    pattern:  /Usuario/delPerfil/ 
+    defaults: { _controller: GCBAStoreBundle:Usuario:delperfil }
+
+        
+gcba_usuario_gcba_listar:
+    pattern:  /Usuario/Gcba/
+    defaults: { _controller: GCBAStoreBundle:UsuarioGcba:listarUsuariosGcba }  
+gcba_log_gcba_listar:
+    pattern:  /Log
+    defaults: { _controller: GCBAStoreBundle:Log:listarLog }  
+
+    
+    
+    
+gcba_usuario_editar:
+    pattern:  /Usuario/Editar/{id}
+    defaults: { _controller: GCBAStoreBundle:Usuario:editarUsuario }         
+gcba_perfil_alta:
+    pattern:  /Usuario/Perfil/Alta/
+    defaults: { _controller: GCBAStoreBundle:Perfil:altaPerfil }
+gcba_perfil_listar:
+    pattern:  /Usuario/Perfil/
+    defaults: { _controller: GCBAStoreBundle:Perfil:listarPerfiles } 
+
+gcba_modulo_editar:
+    pattern:  /Modulo/Editar/{id}
+    defaults: { _controller: GCBAStoreBundle:Modulo:editarModulo }         
+gcba_modulo_alta:
+    pattern:  /Modulo/Alta/
+    defaults: { _controller: GCBAStoreBundle:Modulo:altaModulo }
+gcba_modulo_listar:
+    pattern:  /Modulo/
+    defaults: { _controller: GCBAStoreBundle:Modulo:listarModulo } 
+    
+gcba_accion_editar:
+    pattern:  /Accion/Editar/{id}
+    defaults: { _controller: GCBAStoreBundle:Accion:editarAccion }         
+gcba_accion_alta:
+    pattern:  /Accion/Alta/
+    defaults: { _controller: GCBAStoreBundle:Accion:altaAccion }
+gcba_accion_listar:
+    pattern:  /Accion/
+    defaults: { _controller: GCBAStoreBundle:Accion:listarAccion } 
+    
+gcba_controlador_editar:
+    pattern:  /Controlador/Editar/{id}
+    defaults: { _controller: GCBAStoreBundle:Controlador:editarControlador }         
+gcba_controlador_alta:
+    pattern:  /Controlador/Alta/
+    defaults: { _controller: GCBAStoreBundle:Controlador:altaControlador }
+gcba_controlador_listar:
+    pattern:  /Controlador/
+    defaults: { _controller: GCBAStoreBundle:Controlador:listarControlador }         
+gcba_usuario_verinfo:
+    pattern:  /Usuario/Verinfo/
+    defaults: { _controller: GCBAStoreBundle:Usuario:verinfousuario }       
+gcba_perfil_asignar_accion:
+    pattern:  /Perfil/AsignarAccion/
+    defaults: { _controller: GCBAStoreBundle:Perfil:PerfilAccion }       
+gcba_perfil_addaccion:
+    pattern:  /Usuario/addAccion/
+    defaults: { _controller: GCBAStoreBundle:Perfil:addaccion }
+gcba_usuario_delaccion:
+    pattern:  /Usuario/delAccion/ 
+    defaults: { _controller: GCBAStoreBundle:Perfil:delaccion }    
+gcba_usuario_cambiarpassword:
+    pattern:  /Usuario/cambiarPassword/ 
+    defaults: { _controller: GCBAStoreBundle:Usuario:cambiarPassword }    
+gcba_dt_server:
+    pattern:  /DtServer
+    defaults: { _controller: GCBAStoreBundle:Dt:serverProcessing }
+
+gcba_gen_form:
+    pattern:  /Genorm
+    defaults: { _controller: GCBAStoreBundle:Form:generador }
+gcba_bloqueos:
+    pattern:  /Bloqueo
+    defaults: { _controller: GCBAStoreBundle:Bloqueo:listarBloqueo }  
+
+gcba_root:
+    pattern:  /
+    defaults: { _controller: GCBAStoreBundle:Default:Index }
+gcba_clear:
+    pattern:  /Clear
+    defaults: { _controller: GCBAStoreBundle:Default:clear }
+gcba_syncMenu:
+    pattern:  /SyncMenu
+    defaults: { _controller: GCBAStoreBundle:Accion:syncMenu } 
+gcba_getXml:
+    pattern:  /getXml
+    defaults: { _controller: GCBAStoreBundle:Accion:getXml }
+    
+alta_rol:
+    pattern:  /alta_rol
+    defaults: { _controller: GCBAStoreBundle:Rol:altaRol }
+    
+asignar_rol: 
+    pattern:  /asignar_rol
+    defaults: { _controller: GCBAStoreBundle:Rol:asignarRol }   
+
+asignar_area: 
+    pattern:  /asignar_area
+    defaults: { _controller: GCBAStoreBundle:Rol:agregarArea }   
+
+    
+    
+remito_controller:
+    pattern:  /alta
+    defaults: { _controller: GCBAStoreBundle:Remito:alta }
+    
+buscar_controller:
+    pattern:  /buscar
+    defaults: { _controller: GCBAStoreBundle:Remito:buscar }              
+ 

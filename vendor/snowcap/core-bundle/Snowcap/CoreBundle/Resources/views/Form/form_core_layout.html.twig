@@ -1,0 +1,15 @@
+{% extends 'form_div_layout.html.twig' %}
+
+{% block collection_widget %}
+    {% spaceless %}
+        {% if prototype is defined %}
+            {% set attr = attr|merge({'data-prototype': form_row(prototype) }) %}
+        {% endif %}
+        <div class="form-collection" data-core="form-collection">
+            {{ block('form_widget') }}
+            {% if allow_add %}
+                <a href="#" data-core="form-collection-add">{{ add_label|trans({}, translation_domain) }}</a>
+            {% endif %}
+        </div>
+    {% endspaceless %}
+{% endblock collection_widget %}

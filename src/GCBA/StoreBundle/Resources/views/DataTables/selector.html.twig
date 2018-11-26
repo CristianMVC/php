@@ -1,0 +1,8 @@
+ { sSelector: "#{{ nombre }}",type:"{{ type }}", 
+ {% if type=="checkbox" %}
+ values: ['true'] 
+{% else %} 
+ {% if result %} values:{{ result|raw }} {% endif %} 
+ {% endif %}
+ 
+ },

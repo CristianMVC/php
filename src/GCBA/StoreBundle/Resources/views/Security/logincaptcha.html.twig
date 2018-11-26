@@ -1,0 +1,56 @@
+{% include 'arriba.html.twig' %} 
+
+  </div>
+<div class="contenedor_general">
+<div class="container_12">
+
+    <div class="grid_8 push_3 form_consulta">
+    
+
+    
+   <form name="frm" method="post" action="{{ path('login_check') }}">
+            <fieldset>
+                <legend>autenticaci&oacute;n</legend>
+                
+                <div class="separador"></div>
+       {% if error %}     
+<div class='error_index grid_4 push_1 form_consulta'>
+
+    {% if error.message=='Bad credentials' %}
+     El usuario y contraseña son incorrectos.
+    {% else %}    
+    {{ error.message }}
+    {% endif %}
+</div>    
+{% endif %}          
+         <div class="separador"></div>
+           
+                
+                <label class="largo" for="nombre">usuario (*)</label>
+                <input class="tres text" type="text" name="_username" id='username' value="{{ last_username }}" />
+                
+                <div class="separador"></div>
+            
+                <label class="largo" for="seccion">contrase&ntilde;a (*)</label>
+                <input class="tres text" type="password" name="_password" id='password' autocomplete="off" />
+                
+                <div class="separador"></div>
+                   
+                <label class="largo" for="seccion">Código (*)</label>
+                <div>
+                {{ form_errors(form.captcha)}}
+                </div> 
+                {{ form_widget(form.captcha)}}                
+                <div class="separador"></div>
+                <div class=" grid_2 push_2 form_consulta">
+                    <input class="submit" type="submit" name="Submit" value="ingresar" />  
+                </div>
+        
+                <div class="separador"></div>
+            </fieldset>
+{{ form_end(form) }}
+        
+    </div>
+</div>
+
+{% include 'abajo.html.twig' %}  

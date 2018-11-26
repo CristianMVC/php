@@ -1,0 +1,43 @@
+{% include 'arriba.html.twig' %}
+{% include 'menu_amarillo.html.twig' %}
+
+<div class="contenedor_general">
+
+
+
+<div class="grid_10 push_1 form_consulta">
+<fieldset>
+<legend>Nuevo Rol:</legend>
+<br />
+
+<div class="rol">
+<form  method="post" class="form_consulta">
+
+   {{ form_start(form) }}
+    {{ form_errors(form) }}
+ 
+    {{ form_row(form.nombre) }}
+    {{ form_row(form.descripcion) }}
+     
+    {{ form_rest(form) }}
+    <br />
+    <label class="largo">Asignar areas <p style="color: red;">(sparadas por ",")</p></label>
+    
+ <input type="text" name="areas" id="form_descripcion"  class="uniform-input text" width="180" height="34"/>
+ <div class="button">
+
+ <input type="submit" id="b" class="submit"  value="Enviar" />
+ </div>
+{{ form_end(form) }}
+
+
+    
+</form>
+</div>
+</fieldset>
+</div>
+
+</div>
+
+
+{% include 'abajo.html.twig' %}

@@ -1,0 +1,44 @@
+        
+<script>
+                       
+                       
+                       function cambiar_div(div)
+                {
+
+                    if ($('#'+div).is(':visible')) 
+                    {
+                        $('#'+div).hide()
+                    } else {
+                        $('#'+div).show()
+                    }
+                
+                }
+       
+       
+       
+       </script> 
+               
+<div class='usuario_perfil' >
+    <a href="#" onclick="cambiar_div('div_perfil');return false;">Usuario: {{ user.usuario }} </a>
+    
+    <div id='div_perfil' class='perfil' style='display:none'>
+    <ul>
+    <li>{{ user.nombre }} {{ user.apellido }} </li>
+    {% if user.salt !=""  %}
+        <li><a href="{{ path('gcba_usuario_cambiarpassword') }}">Cambiar Contraseña de usuario</a></li>
+    {% endif %}    
+    {% if user.correo %}
+    <li>{{ user.correo }}</li>
+    {% endif %}
+    </ul>
+       
+    {% for perfil in user.idsysperfil %}
+    <ul>
+         <li>{{ perfil.descripcion }} ({{ perfil.nombre }})</li>
+     </ul>
+    {% endfor %}   
+       
+         
+    </div></div>
+    
+    

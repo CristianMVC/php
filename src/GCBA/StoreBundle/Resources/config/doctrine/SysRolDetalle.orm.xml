@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="GCBA\StoreBundle\Entity\SysRolDetalle" table="sys_rol_detalle">
+    <field name="id_rol" type="integer" column="id_rol" />
+    <field name="id_area" type="integer" column="id_area" />
+    <field name="Detalle_area" type="string" column="Detalle_area" length="100" nullable="true"/>
+    </entity>
+</doctrine-mapping>

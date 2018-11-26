@@ -1,0 +1,224 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+    
+{% include 'arriba.html.twig' %}
+
+{% include 'menu_amarillo.html.twig' %}
+ <script type="text/javascript">  
+
+$(document).ready(function()
+{
+/*    
+  //hide the all of the element with class msg_body
+  $(".msg_body").hide();
+  //toggle the componenet with class msg_body
+  $(".msg_head").click(function()
+  {
+    $(this).next(".msg_body").slideToggle(600);
+  });*/
+  $(".ocultar_mostrar").click(function()
+  {
+    $(this).next(".div_caja_ocultar").slideToggle(600);
+  });
+  $('a.comment').click(function() {
+     var id = $(this).attr('id');
+     $('#commentbox' + id).toggle(500);
+        // alert(id);
+     return false; 
+  });
+ 
+});
+function agregarAccionAPerfil(id,perfil)
+{ 
+    url="{{ path('gcba_perfil_addaccion') }}";
+
+
+
+
+
+    $.get( url+ '?id='+id+'&perfil='+perfil, function(data) {
+        if (data==1)
+        {
+        style = "border:2px solid #D0E9F5; background-color:#ECF8FD";
+        $('#id_'+id ).css({'border': '2px solid #D0E9F5', 'background-color': '#ECF8FD'});
+        $('#tieneaccion_'+id ).html('Tiene Acción:<strong>Sí<strong>');
+        $('#li_id_agregar_'+id ).hide();
+        $('#li_id_eliminar_'+id ).show();
+        }
+                if (data==0)
+        {
+        alert('no se pudo realizar la acción');
+        }
+        if (data=="NP")
+        {
+         alert('no tiene permisos para realizar la acción ');
+        }
+    }); 
+
+}
+
+function eliminarAccionDePerfil(id,perfil)
+{
+    url='{{ path('gcba_usuario_delaccion') }}';   
+
+    $.get( url+'?id='+id+'&perfil='+perfil, function(data) {
+        if (data==1)
+        {
+        $('#id_'+id ).css({'border': '2px solid #D0E8F4', 'background-color': '#FDF4E1'});
+
+        $('#tieneaccion_'+id ).html('Tiene Acción:<strong>No<strong>');
+        $('#li_id_eliminar_'+id ).hide();
+        $('#li_id_agregar_'+id ).show();
+        }
+        if (data==0)
+        {
+        alert('no se pudo realizar la acción');
+        }
+        if (data=="NP")
+        {
+         alert('no tiene permisos para realizar la acción ');
+        }
+    });
+
+} 
+
+</script>
+ <br>         <br> <br> <br> <br> <br> <br> <br> <br> <br>
+<div class="container_12">
+    <div class="clear" style="height:15px;"></div>  
+    
+    
+        <div class="clear" style="height:15px;"></div>       
+    <div class="grid_10 push_1 form_consulta">
+            <div id="div_mensaje" class="error" style="display:none" >
+
+            </div>   
+
+                <form name='frm' id='autenticacion' method='POST'  enctype='application/x-www-form-urlencoded' >
+                    <fieldset>
+                        <legend>Asignaci&oacute;n de Acciones</legend> 
+                        <div class="grid_8 push_1 alpha omega">
+                            <div class="grid_8 alpha omega">
+                                 <div class="separador"></div>
+                                 <label class="largo" for="id_sys_perfil">Perfil</label>                      
+                                <div class="tres">  
+                                    <select name='id_sys_perfil' id='id_sys_perfil' >
+                                            <option value=''>Seleccionar</option>
+
+                                            {% for perfil in perfiles %}
+
+                                                        {% if idperfil == perfil.idsysperfil %}
+                                                             {% set sel = 'selected' %} 
+                                                        {% else %}
+                                                            {% set sel = '' %} 
+                                                        {% endif %}
+
+                                                <option {{ sel }} value='{{ perfil.idsysperfil }}'>{{ perfil.nombre }}</option>     
+                                            {% endfor %} 
+                                         {}
+                                        </select>
+                                </div>
+                                <div class="separador"></div>  
+                            
+                             
+                 
+                                <input type="hidden" name="a" value="getListadoPerfilAccion"  />
+                                <input type="hidden" name="c" value="AdminPerfilAccion"  />
+                                <div class=" grid_2 push_3 form_consulta">
+                                    <input class="submit" type='submit' name='submit' value='Enviar'   />
+                                </div>
+                                <div class="separador"></div>
+                            </div>
+                        </div>
+                    </fieldset>  
+                </form>
+                <div class="separador"></div>
+                <div>
+
+            
+            {% if Acciones|length > 0 %}
+                    {% for reg in Acciones %}
+                      
+
+  
+                             
+                                {% set style2="" %}
+                                {% set perfil_sel=false %} 
+                                {% for perfil in reg.idsysperfil %}  
+                                    {% if perfil.idsysperfil == idperfil %} 
+                                     {% set perfil_sel=true %}
+                                    {% endif %}
+  
+                                {% endfor %}
+                                {% if perfil_sel==true %}
+                                        {% set style2="border:2px solid #D0E9F5; background-color:#ECF8FD" %}
+                                        {% set link = "1" %}
+                                {% else %}
+                                    {% set link = "2" %}
+                                {% endif %}
+
+                                {% set style="border:2px solid #D0E8F4; background-color:#FDF4E1" %}
+                                {% set modulo=reg.idsysmodulo.nombre %}
+                                {% if modulo != modulo_ant %} 
+
+                                      
+                                                </div> 
+
+                                      
+                                        <br> <br><br><br>
+                                        <strong>Módulo {{ modulo }}</strong>
+                                        <a class='ocultar_mostrar'  style='background-color:#FFCCCC; margin:2px;' >Mostrar / Ocultar </a>
+                                        <div class='div_caja_ocultar' style='{{ style }}' >
+                                {% endif %} 
+                                <div id="id_{{ reg.idsysaccion }}" style="{{ style2 }}" >
+                                <div id="id_accion_{{ reg.idsysaccion }}" > 
+                                {% if link == '1'  %}
+                                    {% set sty_a='display:none;' %}
+                                    {% set sty_q='display:block;' %}
+                                {% else %} 
+                                     {% set sty_a='display:block;' %}
+                                    {% set sty_q='display:none;' %}
+                                {% endif %} 
+                               
+                               
+                               <div id='li_id_eliminar_{{ reg.idsysaccion }}' style='{{ sty_q }}'><a href='javascript:void(0);' id='mostrar' onclick='eliminarAccionDePerfil("{{ reg.idsysaccion }}",document.getElementById("id_sys_perfil").value)'>Quitar</a> </div>
+                               <div id='li_id_agregar_{{ reg.idsysaccion }}' style='{{ sty_a }}'><a href='javascript:void(0);' id='mostrar' onclick='agregarAccionAPerfil("{{ reg.idsysaccion }} ",document.getElementById("id_sys_perfil").value)' >Agregar</a> </div>
+                                </div>
+                                
+         
+                                <li>Acci&oacute;n:<strong> {{ reg.nombre }}</strong>  </li>
+                                <li>Route:<strong> {{ reg.nombreroute }}</strong></li>
+                                <li>Descripci&oacute;n:<strong> {{ reg.descripcion }}</strong></li>
+                                <li id='tieneaccion_{{ reg.idsysaccion }}' >Tiene Acción:<strong>
+
+                                {% if perfil_sel==true %}
+                                 Sí
+                                {% else %}
+                                 No
+                                {% endif  %}
+
+                                </strong> </li>
+                                </div>
+
+                                {% set modulo_ant = modulo %}
+                                           
+                    {% endfor %} 
+          {% endif %} 
+
+                          </div>
+
+</div>
+
+
+
+     {% include 'abajo.html.twig' %}
+

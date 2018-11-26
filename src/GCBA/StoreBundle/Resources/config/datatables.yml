@@ -1,0 +1,159 @@
+ymlDataTable:
+ "GCBAStoreBundle:SysUsuario":    
+      route_editar: gcba_usuario_editar
+      route_server: gcba_dt_server
+      mostrar_editar: true
+      mostrar_borrar: false
+      buscador_activo: true
+      exportar: false
+      crearIdTr: true
+      nombrePrimaria: idSysUsuario
+      idTr: 0
+      columns:
+            idSysUsuario:
+              nombre: "Id"
+            usuario:
+              nombre: "Usuario"   
+            nombre:
+              nombre: "Nombre"      
+            apellido:
+              nombre: "Apellido"    
+            intentoLoginFallido:
+              nombre: "intento Login Fallido"  
+            fechaUltimoIntentoFallido:
+              nombre: "fecha Ultimo Intento Fallido"  
+            borrado:
+              nombre: "Borrado"
+      buscador:
+               
+ "GCBAStoreBundle:SysAccion":    
+      route_editar: gcba_accion_editar
+      route_server: gcba_dt_server
+      mostrar_editar: true
+      mostrar_borrar: true
+      buscador_activo: true
+      exportar: true
+      nombrePrimaria: idSysAccion
+      columns:
+        idSysAccion:
+            nombre: "Id"
+        idSysModulo:
+            nombre: "Módulo"  
+        idSysControlador:
+            nombre: "Controlador"    
+    
+        nombre:
+            nombre: "Nombre" 
+        nombreMenu:    
+            nombre: "Nombre Menu" 
+        nombreRoute:
+          nombre: "Route"     
+        descripcion:
+          nombre: "Descripción"     
+        orden:
+          nombre: "Orden"     
+        borrado:
+          nombre: "Borrado"     
+      buscador:
+          id:
+            name: "Id"
+            type: "text"
+          nombre:
+            name: "Nombre"
+            type: "text"
+            
+          idSysModulo:
+            
+            name: "GCBAStoreBundle:SysModulo"    
+            type: "entity"
+            campofk: "nombre"
+          idSysControlador:
+            name: "GCBAStoreBundle:SysControlador"
+            type: "entity"
+            campofk: "nombre"
+          nombreMenu:
+            name: "Nombre Menu"
+            type: "text"           
+ "GCBAStoreBundle:SysLog":    
+      route_editar: false
+      route_server: gcba_dt_server
+      mostrar_editar: false
+      mostrar_borrar: false
+      buscador_activo: true
+      exportar: false
+      nombrePrimaria: idlog
+      columns:
+            idlog:
+                nombre: "Id"      
+
+            administrador:
+                nombre: "Administrador"
+                dato: na
+            accion:
+                nombre: "Accion"   
+            descripcion:
+                nombre: "Descripción"       
+            fecha:    
+                nombre: "Fecha"
+                format: "d/m/Y h:i:s"   
+            orig:    
+                nombre: "Datos Origen"
+                format: "d/m/Y h:i:s" 
+            mod:    
+                nombre: "Modificaciones"
+                format: "d/m/Y h:i:s" 
+                
+   
+            ip:
+                nombre: "Ip"       
+      
+      buscador: 
+            idlog:
+              name: "Id"
+              type: "text" 
+
+                  
+            administrador:
+                name: "GCBAStoreBundle:SysUsuario"    
+                type: "entity"
+                campofk: "usuario" 
+            accion:
+                name: "GCBAStoreBundle:SysAccion"    
+                type: "entity"
+                campofk: "nombre"  
+            descripcion:
+                name: "Descripcion"
+                type: "text"       
+            fecha:    
+                name: "Profesional"
+                type: "text" 
+            ip:
+                name: "Profesional"
+                type: "text"    
+                
+                
+ "GCBAStoreBundle:SysBloqueo":    
+      
+      route_server: gcba_dt_server
+      mostrar_editar: false
+      mostrar_borrar: true
+      buscador_activo: false
+      exportar: false
+      crearIdTr: false
+      nombrePrimaria: idSysBloqueo
+      idTr: 0
+      columns:
+            idSysBloqueo:
+              nombre: "Id"
+            idSysUsuario:
+              nombre: "Usuario"   
+            bloqueadoDesde:
+              nombre: "Bloqueado Desde"
+              format: "d/m/Y h:i:s"        
+            bloqueadoHasta:
+              nombre: "Bloqueado Hasta"
+              format: "d/m/Y h:i:s"      
+            activo:
+              nombre: "Activo"
+      buscador:                
+                                 

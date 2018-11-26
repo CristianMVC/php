@@ -1,0 +1,33 @@
+parameters:
+    webservice_user_provider.class: GCBA\StoreBundle\Security\User\WebserviceUserProvider
+
+services:
+    webservice_user_provider:
+        class: "%webservice_user_provider.class%"
+        calls:
+
+           - [setRequest , ["@service_container", "@doctrine"]]
+    gcba.security.permisos:
+        class: GCBA\StoreBundle\Security\Permisos
+        arguments:
+            entityManager: "@doctrine"
+            ContainerInterface: "@service_container"
+    gcba_datatables:
+        class: GCBA\StoreBundle\Helper\Datatables
+        arguments:
+            ContainerInterface: "@service_container"
+            entityManager: "@doctrine.orm.entity_manager"  
+    gcba_log:
+        class: GCBA\StoreBundle\Helper\Logueo
+        arguments:
+            ContainerInterface: "@service_container"
+            entityManager: "@doctrine.orm.entity_manager"  
+    login_listener:
+        class: 'GCBA\StoreBundle\Listener\LoginListener'
+        arguments: ['@security.context', '@doctrine','@service_container']
+        tags:
+            - { name: 'kernel.event_listener', event: 'security.interactive_login' }                    
+    gcba_api_callejero:
+        class: GCBA\StoreBundle\Helper\ApiCallejero
+        arguments:
+            container: "@service_container"              

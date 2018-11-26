@@ -1,0 +1,141 @@
+    
+{% include 'arriba.html.twig' %}
+
+{% include 'menu_amarillo.html.twig' %}
+
+ <script language="JAVASCRIPT">
+function addPerfil(id,perfil)
+{ 
+url="{{ path('gcba_usuario_addperfil') }}";
+$.get( url+ '?id='+id+'&perfil='+perfil, function(data) {
+verInfoUsuario(id);
+
+}); 
+
+}
+
+function delPerfil(id,perfil)
+{
+url='{{ path('gcba_usuario_delperfil') }}';   
+$.get( url+'?id='+id+'&perfil='+perfil, function(data) {
+verInfoUsuario(id);
+
+});
+
+} 
+
+ 
+function verInfoUsuario(id)
+{
+ 
+url='{{ path('gcba_usuario_verinfo') }}';  
+$.get(url+'?id='+id, function(data) { 
+ 
+ 
+if (id>0)
+{
+
+ if(!document.getElementById('tr_usuario_info_' + id )){
+
+
+             var tr=document.getElementById('tr_usuario_' + id);
+        var tr_info=document.createElement('tr');
+            tr_info.id='tr_usuario_info_' + id; 
+            tr_info.innerHTML =data;
+            tr_info.colSpan=10; 
+
+
+       tr.parentNode.insertBefore( tr_info, tr.nextSibling );
+
+   }
+   else
+   {
+               var tr_info=document.getElementById('tr_usuario_info_' + id) 
+             
+               tr_info.innerHTML =data; 
+   
+   }
+
+  
+        
+
+
+    
+
+
+}
+});   
+
+
+}
+
+</script>   
+
+           
+<div class="contenedor_general">   
+<div class="container_12">
+ <h3 class="subrayado">Usuarios GCBA</h3>
+ </div>
+<div class="container_12">
+   {% include 'mensaje.html.twig' %} 
+       <div class="grid_10 push_1 form_consulta">
+
+
+
+                    <fieldset>
+                    <legend> Alta Usuario GCBA</legend>
+                    <div class="separador"></div>
+                    <div class="grid_8 push_1 alpha omega">
+
+                        
+                       
+
+
+                       <form id='form1' method='post'>    
+                        <div class="separador"></div>
+                        <label class="largo" id="l_usuario" for="campo1">Usuario (<font color="#FF0000">*</font>):</label>
+                        <input type='text' class="dos" id='usuario' name='usuario' >
+
+                        <div class="separador"></div>
+
+                        <label class="largo" id="l_dominio" for="campo1">Dominio (<font color="#FF0000">*</font>):@</label>
+                            <div class="dos">
+                            
+        
+                            <select id='dominio' name='dominio' >
+                            <option value="buenosaires.gob.ar">buenosaires.gob.ar</option>
+                            
+                            </select>
+                            </div>                    
+                            
+                            
+                            <div class="clear" style="height:15px;"></div>
+                            <div class=" grid_2 push_1 alpha form_consulta">
+                            <input type=submit value="Agregar Usuario" class="submit" id="B1">   
+                            </div>
+                    </div>
+            </div>                 
+            </fieldset>
+
+           </form>     
+
+
+
+
+<div class="clear" style="height:15px;"></div>  
+
+
+ <form id="form2" method="post"> 
+   {{ dataTables|raw }}
+
+                <div class="separador"></div>
+                <div class=" grid_4 push_4 form_consulta">
+
+
+</div>
+   </form>              
+
+     </div> 
+     
+     {% include 'abajo.html.twig' %}
+

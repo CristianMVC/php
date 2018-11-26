@@ -1,0 +1,325 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	font-family: Gotham-Book,Verdana,Geneva,sans-serif;
+}
+	
+div.header{
+	background:url(../images/back_header.jpg) repeat-x;
+	height:80px;
+	padding-top:20px;
+}
+
+
+div.user_bar{
+	background:url(../images/back_userbar.jpg) repeat-x;
+	height:35px;
+	padding-top:5px;
+}
+
+
+
+div.user_bar_2{
+	height:20px;
+	padding-top:5px;
+}
+
+
+div.login input{
+	border:1px solid #808080;
+	color:#808080;
+	font-size:12px;
+	font-weight:normal;
+	font-family:Arial, Helvetica, sans-serif;
+	width:80px !important;
+	height:20px;
+	line-height:20px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	margin-right:10px
+}
+
+
+div.login label{
+	color:#EEE;
+	font-size:12px;
+	font-weight:normal;
+	font-family:Arial, Helvetica, sans-serif;
+	width:40px;
+	height:17px;
+	line-height:30px;
+	text-align:right;
+	margin-right:5px;
+}
+
+
+div.login input.submit{
+	border:border:1px solid #808080;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	height:25px;
+	width:50px !important;
+}
+
+
+h1, div.form_consulta legend{
+	font-family:Gotham-Medium, Verdana, Geneva, sans-serif;
+	font-size:21px;
+	color:#3D3D3F;
+	font-weight:normal !important;
+	letter-spacing:-1px;
+}
+
+div.form_consulta legend{
+	display:block;
+	padding-left:15px;
+	padding-right:15px;
+	margin-left:65px;
+}
+
+h3{
+	font-family:Gotham-Medium, Verdana, Geneva, sans-serif;
+	font-size:15px;
+	color:#3D3D3F;
+	font-weight:normal !important;
+	display:block;
+}
+
+
+h2{
+	font-family:Gotham-Medium, Verdana, Geneva, sans-serif;
+	font-size:21px;
+	color:#3D3D3F;
+	font-weight:normal !important;
+}
+
+div.user_bar a{
+	font-family:Gotham-Book, Verdana, Geneva, sans-serif;
+	font-size:13px;
+	color:#FFF;
+	text-decoration:none;
+}
+
+div.user_bar_2 a{
+	font-family:Gotham-Book, Verdana, Geneva, sans-serif;
+	font-size:11px;
+	color:#555;
+	text-decoration:none;
+}
+
+div.form_consulta input{
+	border:1px solid #808080;
+	color:#808080;
+	font-size:15px;
+	font-weight:normal;
+	font-family:Arial, Helvetica, sans-serif;
+	width:100px !important;
+	height:30px;
+	line-height:30px;
+	clear:right;
+	margin-bottom:25px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+}
+
+div.form_consulta input.largo{
+	width:150px !important;
+}
+
+div.selector{
+	overflow:hidden;
+	padding-left:10px;
+	position:relative;
+	background: url(../images/bg_select.png) no-repeat scroll 187px 2px #FFFFFF;
+	width:200px;
+	height:32px;
+	line-height:32px;
+	border: 1px solid #808080;
+	border-radius: 5px 5px 5px 5px;
+	color:#000000;
+	display:inline-block;
+	vertical-align:middle;
+	margin:-2px 0 0 0;
+	}
+
+div.selector select {
+	opacity:0;
+	padding:10px;
+	width:215px;
+	background: none repeat scroll 0 0  transparent;
+	border:medium none;
+	height:25px;
+	position:absolute;
+	color:#000000;
+	left:0;
+	top:0;
+	margin:0;
+	}
+
+div.form_consulta fieldset{
+	border:1px solid #808080;
+	color:#808080;
+	margin-bottom:25px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+}
+
+div.form_consulta label{
+	color:#808080;
+	font-size:15px;
+	font-weight:normal;
+	font-family:Gotham-Book, Arial, Helvetica, sans-serif;
+	width:70px;
+	height:30px;
+	display:block;
+	float:left;
+	clear:left;
+	line-height:30px;
+	margin-bottom:25px;
+	text-align:right;
+	margin-right:10px;
+}
+
+div.form_consulta label.largo{
+	width:150px;
+}
+
+div.form_consulta .submit{
+	background: url(../images/back_button.png);
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	width:100px;
+	border:none;
+	font-family:Gotham-Medium, Arial, Helvetica, sans-serif;
+	color:#FFF;
+	font-size:15px;
+	height:33px;
+	width:300px !important;
+}
+
+
+div.form_consulta .resultado_title{
+	font-family:Gotham-Book, Arial, Helvetica, sans-serif;
+	color:#808080;
+	font-size:16px;
+}
+
+
+div.form_consulta .resultado_number{
+	font-family:Gotham-Bold, Arial, Helvetica, sans-serif;
+	color:#808080;
+	font-size:36px;
+	display:block;
+	clear:both;	
+}
+
+
+div.form_consulta .resultado_leyenda{
+	font-family:Gotham-Medium, Arial, Helvetica, sans-serif;
+	color:#666;
+	font-size:19px;
+}
+
+
+div.center{
+	text-align:center;
+}
+
+
+div.form_consulta a{
+	font-family:Gotham-Medium, Arial, Helvetica, sans-serif;
+	color: #666;
+	text-decoration:none;
+	border-bottom:#666 dashed 1px;
+}
+
+.user_bar .menu ul li {
+    float: left;
+    height: 25px;
+    list-style-image: none;
+    list-style-type: none;
+	margin:7px 0 0 0;
+    padding: 0 30px 0 0;
+}
+
+.user_bar_2 .menu ul li {
+    float: left;
+    height: 25px;
+    list-style-image: none;
+    list-style-type: none;
+	margin:0 0 0 0;
+    padding: 0 30px 0 0;
+}
+
+/*ESTILOS DE TABLAS*/
+
+/*     LISTADOS - TABLA        */
+
+table.contenido a {color:#555555;text-decoration:underline;}
+table.contenido a:hover {color:#000000;}
+
+table.contenido{
+	border-collapse:collapse;
+	width:100%;
+	border:solid 1px #D0D0D0;
+	font-family:Arial, Helvetica, sans-serif;
+	}
+
+table.contenido thead th {
+	background-color:#e1e1e1;
+	border:solid 1px #D0D0D0;
+	color:#000000;
+	font-size:10px;
+	font-weight:bold;
+	padding:4px 0;
+	text-align:center;
+	}
+
+table.contenido th.titulo_tabla{
+   padding:3px;
+   text-align:center;
+   background-color:#FFCF01;
+   font-size:12px;
+   text-transform:uppercase;
+   color:#000000;}
+
+table.contenido td {
+	border:solid 1px #D0D0D0;
+	padding:3px;
+	font-size:10px;
+	padding:4px 0
+	text-align:center;}
+	
+	table.contenido td a {
+	font-size:10px;}
+	
+table.contenido td.alineacion_derecha, div#contenido table.contenido th.alineacion_derecha  {
+	text-align:right;}
+
+table.contenido tfoot{background-color:#F4F4F4;}
+
+table.contenido tr.impar {background-color:#F9F9F9;}
+table.contenido tr.par {background-color:#EFEFEF;}
+table.contenido tr:hover {background-color:#FFFFFF;}
+	
+div#combo_registros {
+	float:right;
+	}
+	
+div#cant_registros {
+	float:left;
+	padding:4px 0 0 0;
+	}
+
+div#combo_registros select {
+	font-size:10px;
+	margin:2px 5px 0 0;
+	width:40px;
+	}
+/**/	

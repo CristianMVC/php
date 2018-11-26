@@ -1,0 +1,127 @@
+
+<style type="text/css" title="currentStyle">
+    @import "{{ asset('DataTables/media/css/demo_page.css') }}"
+    @import "{{ asset('DataTables/media/css/demo_table.css') }}";
+    @import "{{ asset('DataTables/media/css/demo_table.css') }}";
+    @import "{{ asset('DataTables/media/css/TableTools.css') }}";
+</style>
+   <script type="text/javascript" src="{{ asset('js/datepicker/js/jquery-ui-1.10.4.custom.min.js') }}"></script>
+   <script type="text/javascript" src="{{ asset('js/datepicker/js/spanish.js') }}"></script> 
+         
+        <script src="{{ asset('DataTables/media/js/jquery.dataTables.columnFilter.js') }}" type="text/javascript"></script>
+   {% if exportar==true %}         
+        <script type="text/javascript" charset="utf-8" src="{{ asset('DataTables/media/js/ZeroClipboard.js') }}"></script>
+        <script type="text/javascript" charset="utf-8" src="{{ asset('DataTables/media/js/TableTools.js') }}"></script> 
+      {% endif %}  
+        <script type="text/javascript" charset="utf-8"> 
+
+  
+$(document).ready(function() {
+        
+         var oTable=  $('#{{ tabla }}').DataTable( {
+       "aoColumnDefs" : [ {
+            'bSortable' : false,
+            'aTargets' : [ "no-sort" ]
+        } ],
+    "sDom": 'T<"clear">l{% if mostrarBuscarGenerico==true %}f{% endif %}rtip',
+    {% if crearIdTr==true %}
+      "fnCreatedRow": function( nRow, aData, iDataIndex ) {
+        $(nRow).attr('id', 'tr_usuario_'+aData[{{ idTr }}]);
+        $(nRow).attr('onclick', 'verInfoUsuario(' + aData[{{ idTr }}]+')' );
+    },
+    {% endif %}    
+       {% if exportar==true %} 
+        "oTableTools": {   
+            "sSwfPath": "{{ asset('DataTables/media/swf/copy_csv_xls.swf') }}",
+            "aButtons": []
+            
+        },      
+         {% endif %} 
+             
+"bStateSave": true, // presumably saves state for reloads
+        "bProcessing": false,
+        "bServerSide": true,
+        "bSortClasses": false ,
+        "aLengthMenu":  [5,10,40,50, 100, 250,500], 
+        "sAjaxSource": "{{ url_dt }}",
+      //  "aaSorting": [[ corden, "torden" ]],
+               'sPaginationType': 'full_numbers',
+       'oLanguage': {
+                'sUrl': "{{ asset('DataTables.spanish.txt') }}"
+            }, 
+          "fnServerData": function ( sSource, aoData, fnCallback ) {
+            /* Add some data to send to the source, and send as 'POST' */
+            aoData.push( { "name": "msisdn", "value": $('#msisdn').val() } );
+            aoData.push( { "name": "msgdata", "value": $('#msgdata').val() } );
+            aoData.push( { "name": "entity", "value": "{{ entity }}" } );
+            aoData.push( { "name": "indice", "value": "{{ indice }}" } );
+            aoData.push( { "name": "bCampob", "value": $('#campo').val() } );
+            aoData.push( { "name": "buscar", "value": $('#buscar').val() } );
+            aoData.push( { "name": "dql", "value": "{{ dql }}" } );
+
+            $.ajax( {
+                "dataType": 'json',
+                "type": "POST",
+                "url": sSource,
+                "data": aoData,
+                "success": function (data, textStatus, jqXHR) {
+                    oTable.fnSettings().oLanguage.sInfoEmpty = data.sMsg;
+                    oTable.fnSettings().oLanguage.sEmptyTable = data.sMsg;
+                    if (data.sDql)
+                    $("#error").html(data.sDql);
+               
+                  
+                    fnCallback(data, textStatus, jqXHR);
+                }
+            } );
+        }
+      } )
+    {% if campos %}
+      .columnFilter({aoColumns:[
+{% for dato in campos %}
+                 {{ dato.input|raw }} 
+{% endfor %}                
+                ,
+         
+
+       
+                ]}
+                ,
+                {sPlaceHolder: [("thead:before")]}
+                
+                
+            );    
+         {% endif %} 
+jQuery.exists = function(selector) {return ($(selector).length > 0);}         
+if ($.exists("select")) {           
+$("select").uniform();    
+}      
+                     } );  // fin dr
+        
+         
+                 
+                    
+                /*     $(function(){
+
+                // Datepicker
+                fecha=new Date('07/12/2013');
+
+                $( ".date_range_filter" ).datepicker( "option", "dateFormat", "dd/mm/yy" );
+                $( ".date_range_filter" ).datepicker( "option", "changeMonth", "true" );
+                $( ".date_range_filter" ).datepicker( "option", "changeYear", "true" );
+                $( ".date_range_filter" ).datepicker( "option", "minDate", fecha );
+                $( ".date_range_filter" ).datepicker( "option", "maxDate", "+0Y" );
+                $( ".date_range_filter" ).datepicker( "option", "buttonImage", "images/calendar.gif" );
+                $( ".date_range_filter" ).datepicker( "option", "buttonImageOnly", "false" );
+                $( ".date_range_filter" ).datepicker( "option", "showOn", "button" );
+                
+
+                              
+               
+
+
+            });   */ 
+  
+
+   </script> 
+    

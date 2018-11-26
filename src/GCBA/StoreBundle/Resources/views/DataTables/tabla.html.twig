@@ -1,0 +1,93 @@
+
+ <div id="codigo">
+{% include 'GCBAStoreBundle:DataTables:datatables.html.twig' %}    
+ </div>
+ <div> 
+ {{ buscador|raw }}
+ </div>
+</div>
+ 
+    <div class="fuera_flujo">  
+ <div class="tabla_marginada">
+ 
+ <script>
+ $(document).ready(function() {
+    $('#selecctall').click(function(event) {  //on click
+        if(this.checked) { // check select status
+            $('.checkbox1').each(function() { //loop through each checkbox
+                this.checked = true;  //select all checkboxes with class "checkbox1"              
+            });
+        }else{
+            $('.checkbox1').each(function() { //loop through each checkbox
+                this.checked = false; //deselect all checkboxes with class "checkbox1"                      
+            });        
+        }
+    });
+   
+});
+</script>
+   <form id="form2" method="post">  
+<table id="{{ tabla }}" class="contenido display" cellspacing="0">
+
+    <thead>  
+   
+        <tr>
+                {% if Nombres|length > 0 %}
+                    {% for dato in Nombres %} 
+                        <th>{{ dato.nombre }}</th>           
+                    {% endfor %} 
+                 {% else %} 
+                    {% for dato in Columns %} 
+                        <th>{{ dato }}</th>           
+                    {% endfor %}   
+                {% endif %}
+                {% if editar %}
+                    <th>&nbsp;</th>           
+                {% endif %}
+                {% if borrar %}
+                    <th class="no-sort">Operaciones<input type="checkbox" id="selecctall"/></th>           
+                {% endif %}
+                {% if marcar %}
+                    <th class="no-sort">Operaciones<input type="checkbox" id="selecctall"/></th>           
+                {% endif %}
+                {% if detalle %}
+                    <th>detalle</th>           
+                {% endif %}
+        </tr>
+    </thead>
+
+ 
+</table>
+                <div class="separador"></div>
+        {% if borrar %}              
+                <div class=" grid_4 push_6 form_consulta">
+<input type="submit" class="submit" value="Borrar" name="B" id="b" >
+
+</div>
+       {% endif %}
+        {% if marcar %}              
+                <div class=" grid_4 push_6 form_consulta">
+<input type="submit" class="submit" value="{{ AccionBoton }}" name="B" id="b" >
+
+</div>
+       {% endif %}
+
+   </form>  
+</div> <!-- tabla marginada-->
+
+</div> <!-- fuera flujo  -->
+               
+ <div class="container_12"> 
+     <div class="separador"></div>  
+ 
+   <div id="error">
+
+</div>     
+  {% if exportar %}
+  <div id="exportar">
+   {% if route_exportar %}
+  <a href="{{ path(route_exportar) }}">Exportar</a>
+      {% endif %}  
+        </div>  
+    {% endif %}       
+   

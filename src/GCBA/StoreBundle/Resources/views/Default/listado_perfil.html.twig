@@ -1,0 +1,67 @@
+    
+{% include 'arriba.html.twig' %}
+
+{% include 'menu_amarillo.html.twig' %}
+
+
+
+           
+<div class="contenedor_general">   
+<div class="container_12">
+ <h3 class="subrayado">Perfiles</h3>
+ </div>
+<div class="container_12">
+   {% include 'mensaje.html.twig' %} 
+<div class="clear" style="height:15px;"></div>  
+
+
+    <form id="form2" method="post">  
+<table class="contenido">              
+    
+    <thead>
+    <tr>
+    <th class="titulo_tabla"  colspan="5">
+            Perfiles
+    </th>
+    </tr>
+    </thead>
+    <tr>
+        
+         <th>Borrar</th>
+
+        <th>{{ knp_pagination_sortable(pagination,'idsysperfil', 'p.idSysPerfil')|raw }}</th>
+       <th>{{ knp_pagination_sortable(pagination,'Nombre', 'p.nombre')|raw }}</th>
+    <th>{{ knp_pagination_sortable(pagination,'Descripcion', 'p.descripcion')|raw }}</th>
+                        
+
+    </tr>
+
+    
+    {% for perfil in pagination %}
+    <tr>
+        <td><input type="checkbox" id="ids_{{ perfil.idsysperfil }}" name="ids[{{ perfil.idsysperfil }}]"></td>
+
+        <td>{{ perfil.idsysperfil }}</td>
+        <td>{{ perfil.nombre }}</td>
+        <td>{{ perfil.descripcion }}</td>
+    </tr>
+    {% endfor %}
+    
+    
+</table>
+     <div class="separador"></div>   
+<div class="navigation" align="center">
+    {{ knp_pagination_render(pagination)|raw }}
+   </div>
+
+                <div class="separador"></div>
+                <div class=" grid_4 push_4 form_consulta">
+<input type="submit" class="submit" value="Borrar" name="B" id="b" >
+
+</div>
+   </form>              
+   </div>
+    
+
+     {% include 'abajo.html.twig' %}
+

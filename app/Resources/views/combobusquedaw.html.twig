@@ -1,0 +1,18 @@
+
+ <script src="{{ asset('js/combobusqueda.js') }}" type="text/javascript"></script>
+
+
+
+ <div class="clear" style="height:15px;"></div>
+  
+<input name="txt_busca{{ indice }}" id="txt_busca{{ indice }}" class="dos" type="text" value="">
+
+ <div class="grid_2 push_0 alpha form_consulta"> 
+ 
+<input name="busca{{ indice }}" id="busca{{ indice }}" value="Buscar" onClick="buscar_com(this,1,'{{ combo }}','{{ indice }}');$.uniform.update('select');"  type="button" class="submit">
+</div>  <div class="grid_2 push_0 alpha form_consulta">
+<input name="busca_pro{{ indice }}" id="busca_pro{{ indice }}" value="Próximo" onClick="buscar_com(this,1,'{{ combo }}','{{ indice}}');$.uniform.update('select');"  type="button" class="submit">
+  </div>
+<br>
+
+

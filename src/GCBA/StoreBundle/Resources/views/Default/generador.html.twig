@@ -1,0 +1,57 @@
+{% include 'arriba.html.twig' %} 
+{% include 'menu_amarillo.html.twig' %}
+
+<div class="contenedor_general">
+<div class="container_12">
+
+{% if error %}     
+<div class='error_index'>
+    {% if error.message=='Bad credentials' %}
+     Los datos suministrados son incorrectos
+    {% else %}    
+    {{ error.message }}
+    {% endif %}
+</div>    
+{% endif %}
+    <div class="grid_6 push_3 form_consulta">
+    
+
+    
+        <form name="frm" method="post">
+            <fieldset>
+                <legend>Generar Configs</legend>
+                
+                <div class="separador"></div>
+                     <label class="largo"  for="campo2">Entidad:</label>
+                     <select name="entity" id="entity">
+                       {% for entity in entities %}
+                       <option value="{{ entity }}">{{ entity }}</option>
+                         {% endfor %}
+                     </select>
+                     
+                        <div class="separador"></div> 
+                     <label class="largo"  for="campo2">Bundle:</label>
+                     <select name="bundle" id="bundle">
+                       {% for bundle in bundles %}
+                       <option value="{{ bundle }}">{{ bundle }}</option>
+                         {% endfor %}
+                     </select>
+  
+                   
+                        <div class="separador"></div> 
+                   
+                        <div class="separador"></div>
+                
+                        <div class="separador"></div>
+                <div class=" grid_2 push_2 form_consulta">
+                    <input class="submit" type="submit" name="Submit" value="Generar" />  
+                </div>
+        
+                <div class="separador"></div>
+            </fieldset>
+        </form>
+        
+    </div>
+</div>
+
+{% include 'abajo.html.twig' %}  

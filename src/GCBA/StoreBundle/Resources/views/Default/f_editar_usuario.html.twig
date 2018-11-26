@@ -1,0 +1,90 @@
+{% include 'arriba.html.twig' %}
+
+{% include 'menu_amarillo.html.twig' %}
+           
+<div class="contenedor_general">
+   
+
+    <div class="container_12">
+   {% include 'mensaje.html.twig' %} 
+            <div class="grid_10 push_1 form_consulta">
+
+                    {{ form_start(form) }}
+
+                    <fieldset>
+                    <legend> Editar Usuario</legend>
+                    <div class="separador"></div>
+                 
+                     
+
+                    
+                    <div class="grid_8 push_1 alpha omega">
+                       <a href="{{ path('gcba_alta_usuario')}}">Alta Usuario</a>
+                    <div class="separador"></div> 
+                        {{ form_errors(form) }}
+
+
+                        
+                        {{ form_label(form.nombre) }}  
+                        {{ form_errors(form.nombre) }}
+  
+                        {{ form_widget(form.nombre) }}
+                        <div class="separador"></div>
+
+
+
+                        {{ form_label(form.apellido) }} 
+                        {{ form_errors(form.apellido) }}
+
+                                {{ form_widget(form.apellido) }}
+
+                        <div class="separador"></div>
+        
+                        <div class="separador"></div>
+
+                        {{ form_label(form.usuario) }} 
+                        {{ form_errors(form.usuario) }}
+
+                                {{ form_widget(form.usuario) }}
+                        <div class="separador"></div>
+
+
+                        {{ form_label(form.correo) }} 
+                        {{ form_errors(form.correo) }}
+
+                            
+                                {{ form_widget(form.correo) }}
+                        <div class="separador"></div>
+
+                        {{ form_label(form.password) }} 
+                        {{ form_errors(form.password) }}
+
+                                {{ form_widget(form.password) }}
+                        <div class="separador"></div>
+
+                            {{ form_label(form.activo) }} 
+                        {{ form_errors(form.activo) }}
+                            <div class="uno">
+                                {{ form_widget(form.activo) }}
+                            </div>                    
+                            
+                            
+                            <div class="clear" style="height:15px;"></div>
+                            <div class=" grid_2 push_1 alpha form_consulta">
+                                {{ form_widget(form.Guardar) }}
+                            </div>
+                    </div>
+            </div>                 
+            </fieldset>
+            {{ form_end(form) }}
+                
+               <div class="clear" style="height:15px;"></div>
+  <h3 class="subrayado">Usuarios</h3>              
+        {% include 'GCBAStoreBundle:Default:grilla_usuario.html.twig' %}
+
+    
+    </div>   <!-- general 12-->
+   </div>
+
+
+ {% include 'abajo.html.twig' %}

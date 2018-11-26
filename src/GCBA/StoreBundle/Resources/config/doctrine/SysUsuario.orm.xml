@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="GCBA\StoreBundle\Entity\SysUsuario" table="sys_usuario">
+    <id name="idSysUsuario" type="bigint" column="id_sys_usuario">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="correo" type="string" column="correo" length="250" nullable="false"/>
+    <field name="usuario" type="string" column="usuario" length="100" nullable="false"/>
+    <field name="password" type="string" column="password" length="255" nullable="true"/>
+    <field name="nombre" type="string" column="nombre" length="20" nullable="false"/>
+    <field name="apellido" type="string" column="apellido" length="20" nullable="false"/>
+    <field name="borrado" type="integer" column="borrado" nullable="false"/>
+    <field name="intentoLoginFallido" type="integer" column="intento_login_fallido" nullable="true"/>
+    <field name="fechaUltimoIntentoFallido" type="datetime" column="fecha_ultimo_intento_fallido" nullable="true"/>
+    <field name="claveValidaHasta" type="datetime" column="clave_valida_hasta" nullable="true"/>
+    <field name="primerLogin" type="integer" column="primer_login" nullable="true"/>
+    <field name="logeado" type="integer" column="logeado" nullable="true"/>
+    <field name="ultimoAcceso" type="datetime" column="ultimo_acceso" nullable="true"/>
+    <field name="activo" type="integer" column="activo" nullable="false"/>
+    <field name="salt" type="string" column="salt" length="255" nullable="true"/>
+    <many-to-many field="idSysPerfil" target-entity="SysPerfil" inversed-by="idSysUsuario">
+      <join-table name="sys_usuario_perfil">
+        <join-columns>
+          <join-column name="id_sys_usuario" referenced-column-name="id_sys_usuario" on-delete="CASCADE"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="id_sys_perfil" referenced-column-name="id_sys_perfil" on-delete="CASCADE"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,42 @@
+{% include 'arriba.html.twig' %}
+
+{% include 'menu_amarillo.html.twig' %}
+
+<div class="contenedor_general">   
+
+    <div class="container_12">
+        {% include 'mensaje.html.twig' %}  
+        <div class="grid_10 push_1 form_consulta">
+
+
+
+            <fieldset>
+            <legend> Ver Config</legend>
+            <div class="separador"></div>
+            <div class="grid_8 push_1 alpha omega">
+                {% for nombre, valor in parameters %}
+                <ul>
+                    <li>{{ nombre }}: 
+             
+
+                        {{ valor }}  
+                                        
+                    </li>
+                </ul>
+
+                {% endfor %}
+
+
+            </div>
+        </div>                 
+        </fieldset>
+
+
+
+
+    </div>
+    </div>   <!-- general 12-->
+
+   </div> <!-- general-->
+
+ {% include 'abajo.html.twig' %}

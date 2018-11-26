@@ -1,0 +1,28 @@
+
+
+gcba_store:
+    resource: "@GCBAStoreBundle/Resources/config/routing.yml"
+    prefix:   /
+
+gregwar_captcha_routing:
+    resource: "@GregwarCaptchaBundle/Resources/config/routing/routing.yml"
+
+snowcap_im:
+    resource: "@SnowcapImBundle/Resources/config/routing.yml"
+login:
+    pattern:   /login
+    defaults:  { _controller: GCBAStoreBundle:Security:login }
+login_check:
+    pattern:   /login_check
+
+logout:
+    path:   /logout     
+
+        
+  
+    
+    
+
+
+
+      

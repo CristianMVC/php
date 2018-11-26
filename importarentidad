@@ -1,0 +1,3 @@
+echo php app/console doctrine:mapping:import --force GCBAStoreBundle
+--filter="'$1'" xml
+ 

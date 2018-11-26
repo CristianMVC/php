@@ -1,0 +1,116 @@
+parameters:
+    snowcap_core.google_analytics.tracking_id:
+    snowcap_core.google_analytics.debug:
+    snowcap_core.google_analytics.domain_name:
+    snowcap_core.google_analytics.allow_linker:
+    snowcap_core.paginator.template: ~
+
+services:
+    # Load twig dump
+    twig.extension.dump:
+        class: Twig_Extension_Debug
+        tags: [ { name: 'twig.extension' } ]
+    # Load twig text
+    twig.extension.text:
+        class: Twig_Extensions_Extension_Text
+        tags: [ { name: 'twig.extension' } ]
+
+    # Form types
+    snowcap_core.file_type:
+        class: Snowcap\CoreBundle\Form\Type\FileType
+        tags:
+            - { name: form.type, alias: snowcap_core_file }
+        calls:
+            - [ setUploadDir, [ %kernel.root_dir%/../web ] ]
+    snowcap_core.image_type:
+        class: Snowcap\CoreBundle\Form\Type\ImageType
+        tags:
+            - { name: form.type, alias: snowcap_core_image }
+    snowcap_core.video_type:
+        class: Snowcap\CoreBundle\Form\Type\VideoType
+        tags:
+            - { name: form.type, alias: snowcap_core_video }
+    snowcap_core.sound_type:
+        class: Snowcap\CoreBundle\Form\Type\SoundType
+        tags:
+            - { name: form.type, alias: snowcap_core_sound }
+
+    # Form type extensions
+    snowcap_core.collection_type_extension:
+        class: Snowcap\CoreBundle\Form\Extension\CollectionTypeExtension
+        tags:
+            - { name: form.type_extension, alias: collection }
+
+    # Field entity event subscriber
+    snowcap_core.file_subscriber:
+        class: Snowcap\CoreBundle\Listener\FileSubscriber
+        arguments: [%kernel.root_dir%/../web]
+        tags:
+            - { name: doctrine.event_subscriber}
+
+    # Navigation
+    snowcap_core.navigation:
+        class: Snowcap\CoreBundle\Navigation\NavigationRegistry
+        calls:
+            - [ setContainer, [@service_container]]
+
+    snowcap_core.twig_navigation:
+        class: Snowcap\CoreBundle\Twig\Extension\NavigationExtension
+        arguments: [@snowcap_core.navigation]
+        tags:
+            - { name: twig.extension }
+
+    # Twig extensions
+    snowcap_core.twig_date:
+        class: Snowcap\CoreBundle\Twig\Extension\DateExtension
+        arguments: [@translator]
+        tags:
+            - { name: twig.extension }
+
+    snowcap_core.twig_text:
+        class: Snowcap\CoreBundle\Twig\Extension\TextExtension
+        tags:
+            - { name: twig.extension }
+
+    snowcap_core.twig_google:
+        class: Snowcap\CoreBundle\Twig\Extension\GoogleExtension
+        arguments: [%snowcap_core.google_analytics.tracking_id%, %snowcap_core.google_analytics.debug%]
+        calls:
+            - [ setDomainName, [%snowcap_core.google_analytics.domain_name%]]
+            - [ setAllowLinker, [%snowcap_core.google_analytics.allow_linker%]]
+            - [ setTagsManagerId, [%snowcap_core.google_tags_manager.id%]]
+        tags:
+            - { name: twig.extension }
+
+    snowcap_core.twig_facebook:
+        class: Snowcap\CoreBundle\Twig\Extension\FacebookExtension
+        arguments: [%snowcap_core.facebook.app_id%]
+        tags:
+            - { name: twig.extension }
+
+    snowcap_core.twig_site:
+        class: Snowcap\CoreBundle\Twig\Extension\SiteExtension
+        tags:
+            - { name: twig.extension }
+
+    snowcap_core.twig_paginator:
+        class: Snowcap\CoreBundle\Twig\Extension\PaginatorExtension
+        arguments: [%snowcap_core.paginator.template%]
+        calls:
+            - [ setContainer, [@service_container]]
+        tags:
+            - { name: twig.extension }
+
+    # RSS feeds
+    snowcap_core.feed_manager:
+        class: Snowcap\CoreBundle\Feed\FeedManager
+
+    snowcap_core.request_listener:
+        class: Snowcap\CoreBundle\Listener\RequestListener
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+
+    # Google sitemap
+    snowcap_core.sitemap_manager:
+        class: Snowcap\CoreBundle\Sitemap\SitemapManager
+        arguments: [@validator]
